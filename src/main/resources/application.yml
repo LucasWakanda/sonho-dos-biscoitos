@@ -1,6 +1,6 @@
 server:
  servlet:
-    context-path: /cadastro-comercio/api
+    context-path: /cliente-empresa/api
     
 spring:
   datasource:
