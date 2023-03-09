@@ -6,6 +6,8 @@ import java.util.UUID;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -16,14 +18,12 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.br.CPF;
 
 import lombok.AccessLevel;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 @NoArgsConstructor(access = AccessLevel.PRIVATE)
 @Getter
 @Entity
-@AllArgsConstructor(access = AccessLevel.PRIVATE)
 public class Cliente {
 
 	@Id
@@ -32,44 +32,47 @@ public class Cliente {
 	private UUID idCliente;
 	@NotBlank
 	private String nomeCompleto;
-	@NotBlank
 	@NotNull
 	private LocalDate dataDeNascimento;
 	@NotNull
+	@Enumerated(EnumType.STRING)
 	private Sexo sexo;
 	@CPF
+	@Column(unique = true)
 	private String cpf;
 	@NotBlank
 	@Email
+	@Column(unique = true)
 	private String email;
-	@NotBlank
-	private int Telefone;
-	@NotBlank
-	private int cep;
 	@NotNull
+	private String telefone;
+	@NotNull
+	private String cep;
+	@NotNull
+	@Enumerated(EnumType.STRING)
 	private Estado estado;
 	@NotBlank
 	private String cidade;
 	@NotBlank
 	private String bairro;
-	@NotBlank
+	@NotNull
 	private String rua;
-	@NotBlank
+	@NotNull
 	private String numeroDaResidencia;
 
 	private LocalDateTime dataHoraDoCadastro;
 	private LocalDateTime dataHoraDaUltimaAlteracao;
 
-	public Cliente(@NotBlank String nomeCompleto, @NotBlank @NotNull LocalDate dataDeNascimento, @NotNull Sexo sexo,
-			@CPF String cpf, @NotBlank @Email String email, @NotBlank int telefone, @NotBlank int cep,
-			@NotNull Estado estado, @NotBlank String cidade, @NotBlank String bairro, @NotBlank String rua,
-			@NotBlank String numeroDaResidencia) {
+	public Cliente(@NotBlank String nomeCompleto, @NotNull LocalDate dataDeNascimento, @NotNull Sexo sexo,
+			@CPF String cpf, @NotNull @Email String email, @NotNull String telefone, @NotNull String cep,
+			@NotNull Estado estado, @NotNull String cidade, @NotNull String bairro, @NotNull String rua,
+			@NotNull String numeroDaResidencia) {
 		this.nomeCompleto = nomeCompleto;
 		this.dataDeNascimento = dataDeNascimento;
 		this.sexo = sexo;
 		this.cpf = cpf;
 		this.email = email;
-		Telefone = telefone;
+		this.telefone = telefone;
 		this.cep = cep;
 		this.estado = estado;
 		this.cidade = cidade;
@@ -78,5 +81,4 @@ public class Cliente {
 		this.numeroDaResidencia = numeroDaResidencia;
 		this.dataHoraDoCadastro = LocalDateTime.now();
 	}
-
 }

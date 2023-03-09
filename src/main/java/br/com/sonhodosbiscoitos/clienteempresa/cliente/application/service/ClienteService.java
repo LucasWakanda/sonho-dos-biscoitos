@@ -6,6 +6,5 @@ import br.com.sonhodosbiscoitos.clienteempresa.cliente.application.api.ClienteRe
 import br.com.sonhodosbiscoitos.clienteempresa.cliente.application.api.ClienteResponse;
 
 public interface ClienteService {
-
 	ClienteResponse criaCliente(@Valid ClienteRequest clienteRequest);
 }
