@@ -15,9 +15,9 @@ private final ClienteService clienteService;
 	@Override
 	public ClienteResponse postCliente(@Valid ClienteRequest clienteRequest) {
 log.info("[Start] ClienteController postCliente");
-ClienteResponse clienteResponse = clienteService.criaCliente(clienteRequest);
+ClienteResponse clienteCriado = clienteService.criaCliente(clienteRequest);
 log.info("[finish]ClienteController postCliente");
-		return null;
+		return clienteCriado;
 	}
 
 }
