@@ -11,12 +11,14 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.br.CPF;
 
+import br.com.sonhodosbiscoitos.clienteempresa.cliente.application.api.ClienteRequest;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -63,22 +65,18 @@ public class Cliente {
 	private LocalDateTime dataHoraDoCadastro;
 	private LocalDateTime dataHoraDaUltimaAlteracao;
 
-	public Cliente(@NotBlank String nomeCompleto, @NotNull LocalDate dataDeNascimento, @NotNull Sexo sexo,
-			@CPF String cpf, @NotNull @Email String email, @NotNull String telefone, @NotNull String cep,
-			@NotNull Estado estado, @NotNull String cidade, @NotNull String bairro, @NotNull String rua,
-			@NotNull String numeroDaResidencia) {
-		this.nomeCompleto = nomeCompleto;
-		this.dataDeNascimento = dataDeNascimento;
-		this.sexo = sexo;
-		this.cpf = cpf;
-		this.email = email;
-		this.telefone = telefone;
-		this.cep = cep;
-		this.estado = estado;
-		this.cidade = cidade;
-		this.bairro = bairro;
-		this.rua = rua;
-		this.numeroDaResidencia = numeroDaResidencia;
-		this.dataHoraDoCadastro = LocalDateTime.now();
-	}
+	public Cliente(@Valid ClienteRequest clienteRequest) {
+		this.nomeCompleto = clienteRequest.getNomeCompleto();
+		this.dataDeNascimento = clienteRequest.getDataDeNascimento();
+		this.sexo = clienteRequest.getSexo();
+		this.cpf = clienteRequest.getCpf();
+		this.email = clienteRequest.getEmail();
+		this.telefone = clienteRequest.getTelefone();
+		this.cep = clienteRequest.getCep();
+		this.estado = clienteRequest.getEstado();
+		this.cidade = clienteRequest.getCidade();
+		this.bairro = clienteRequest.getBairro();
+		this.rua = clienteRequest.getRua();
+		this.numeroDaResidencia = clienteRequest.getNumeroDaResidencia();
+		this.dataHoraDoCadastro = LocalDateTime.now();	}
 }
