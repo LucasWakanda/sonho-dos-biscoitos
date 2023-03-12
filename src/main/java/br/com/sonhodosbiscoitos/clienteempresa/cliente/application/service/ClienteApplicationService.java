@@ -33,8 +33,9 @@ return  ClienteResponse.builder()
 	@Override
 	public List<ClienteListResponse> buscaTodosClientes() {
 log.info("[start]ClienteResponse buscaTodosClientes");
+List<ClienteListResponse> clientes =clienteRepository.buscaTodosClientes();
 log.info("[finish]ClienteResponse buscaTodosClientes");
-		return null;
+		return ClienteListResponse.converte(clientes);
 	}
 
 }
