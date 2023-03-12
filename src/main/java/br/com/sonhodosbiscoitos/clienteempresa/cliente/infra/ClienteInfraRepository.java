@@ -4,7 +4,6 @@ import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
-import br.com.sonhodosbiscoitos.clienteempresa.cliente.application.api.ClienteListResponse;
 import br.com.sonhodosbiscoitos.clienteempresa.cliente.application.repository.ClienteRepository;
 import br.com.sonhodosbiscoitos.clienteempresa.cliente.domain.Cliente;
 import lombok.RequiredArgsConstructor;
@@ -25,9 +24,10 @@ public class ClienteInfraRepository implements ClienteRepository {
 	}
 
 	@Override
-	public List<ClienteListResponse> buscaTodosClientes() {
+	public List<Cliente> buscaTodosClientes() {
 		log.info("[start]ClienteInfraRepository buscaTodosClientes");
+		List<Cliente> todosClientes = clienteSpringDataJPARepository.findAll();
 		log.info("[finish]ClienteInfraRepository buscaTodosClientes");
-		return null;
+		return todosClientes;
 	}
 }

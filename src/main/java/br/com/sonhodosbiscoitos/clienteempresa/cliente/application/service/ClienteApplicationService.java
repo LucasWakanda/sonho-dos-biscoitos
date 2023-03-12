@@ -13,6 +13,7 @@ import br.com.sonhodosbiscoitos.clienteempresa.cliente.application.repository.Cl
 import br.com.sonhodosbiscoitos.clienteempresa.cliente.domain.Cliente;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
+
 @Log4j2
 @Service
 @RequiredArgsConstructor
@@ -22,19 +23,17 @@ public class ClienteApplicationService implements ClienteService {
 
 	@Override
 	public ClienteResponse criaCliente(@Valid ClienteRequest clienteRequest) {
-log.info("[start]ClienteApplicationService criaCliente ");
-Cliente cliente = clienteRepository.salva(new Cliente(clienteRequest));
-log.info("[finish]ClienteApplicationService criaCliente ");
-return  ClienteResponse.builder()
-		.idCliente(cliente.getIdCliente())
-		.build();
+		log.info("[start]ClienteApplicationService criaCliente ");
+		Cliente cliente = clienteRepository.salva(new Cliente(clienteRequest));
+		log.info("[finish]ClienteApplicationService criaCliente ");
+		return ClienteResponse.builder().idCliente(cliente.getIdCliente()).build();
 	}
 
 	@Override
 	public List<ClienteListResponse> buscaTodosClientes() {
-log.info("[start]ClienteResponse buscaTodosClientes");
-List<ClienteListResponse> clientes =clienteRepository.buscaTodosClientes();
-log.info("[finish]ClienteResponse buscaTodosClientes");
+		log.info("[start]ClienteResponse buscaTodosClientes");
+		List<Cliente> clientes = clienteRepository.buscaTodosClientes();
+		log.info("[finish]ClienteResponse buscaTodosClientes");
 		return ClienteListResponse.converte(clientes);
 	}
 
