@@ -1,6 +1,7 @@
 package br.com.sonhodosbiscoitos.clienteempresa.cliente.application.api;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.validation.Valid;
 
@@ -32,4 +33,11 @@ public class ClienteController implements ClienteAPI {
 		return clientes;
 	}
 
+	@Override
+	public ClienteDetalhadoResponse getTodosClienteAtravesId(UUID idCliente) {
+		log.info("[start]ClienteController getTodosClienteAtravesId");
+		log.info("[idCliente]{}" , idCliente);
+		log.info("[start]ClienteController getTodosClienteAtravesId");
+		return null;
+	}
 }
