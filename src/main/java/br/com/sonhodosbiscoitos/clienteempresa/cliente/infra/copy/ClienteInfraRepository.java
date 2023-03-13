@@ -1,4 +1,4 @@
-package br.com.sonhodosbiscoitos.clienteempresa.cliente.infra;
+package br.com.sonhodosbiscoitos.clienteempresa.cliente.infra.copy;
 
 import java.util.List;
 import java.util.UUID;
