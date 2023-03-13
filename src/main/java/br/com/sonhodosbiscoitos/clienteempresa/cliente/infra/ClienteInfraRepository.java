@@ -1,7 +1,9 @@
 package br.com.sonhodosbiscoitos.clienteempresa.cliente.infra;
 
 import java.util.List;
+import java.util.UUID;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
 import br.com.sonhodosbiscoitos.clienteempresa.cliente.application.repository.ClienteRepository;
@@ -30,4 +32,13 @@ public class ClienteInfraRepository implements ClienteRepository {
 		log.info("[finish]ClienteInfraRepository buscaTodosClientes");
 		return todosClientes;
 	}
+
+	@Override
+	public Cliente buscaClienteAtravesId(UUID idCliente) {
+		log.info("[start]ClienteInfraRepository buscaClienteAtravesId");
+		Cliente cliente = clienteSpringDataJPARepository.findById(idCliente)
+				.orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND,"Cliente não encontrado!"));
+		log.info("[finish]ClienteInfraRepository buscaClienteAtravesId");
+		return cliente;
+	} 
 }
