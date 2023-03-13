@@ -1,11 +1,13 @@
 package br.com.sonhodosbiscoitos.clienteempresa.cliente.application.service;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.validation.Valid;
 
 import org.springframework.stereotype.Service;
 
+import br.com.sonhodosbiscoitos.clienteempresa.cliente.application.api.ClienteDetalhadoResponse;
 import br.com.sonhodosbiscoitos.clienteempresa.cliente.application.api.ClienteListResponse;
 import br.com.sonhodosbiscoitos.clienteempresa.cliente.application.api.ClienteRequest;
 import br.com.sonhodosbiscoitos.clienteempresa.cliente.application.api.ClienteResponse;
@@ -35,6 +37,13 @@ public class ClienteApplicationService implements ClienteService {
 		List<Cliente> clientes = clienteRepository.buscaTodosClientes();
 		log.info("[finish]ClienteResponse buscaTodosClientes");
 		return ClienteListResponse.converte(clientes);
+	}
+
+	@Override
+	public ClienteDetalhadoResponse buscaClienteAtravesId(UUID idCliente) {
+		log.info("[start]ClienteApplicationService buscaClienteAtravesId");
+		log.info("[finish]ClienteApplicationService buscaClienteAtravesId");
+		return null;
 	}
 
 }
