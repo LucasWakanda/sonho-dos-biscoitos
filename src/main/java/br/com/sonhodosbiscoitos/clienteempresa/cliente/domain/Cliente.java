@@ -18,6 +18,7 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.br.CPF;
 
+import br.com.sonhodosbiscoitos.clienteempresa.cliente.application.api.ClienteAlteracaoRequest;
 import br.com.sonhodosbiscoitos.clienteempresa.cliente.application.api.ClienteRequest;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -79,4 +80,17 @@ public class Cliente {
 		this.rua = clienteRequest.getRua();
 		this.numeroDaResidencia = clienteRequest.getNumeroDaResidencia();
 		this.dataHoraDoCadastro = LocalDateTime.now();	}
-}
+
+	public void altera(@Valid ClienteAlteracaoRequest clienteAlteracaoRequest) {
+		this.nomeCompleto = clienteAlteracaoRequest.getNomeCompleto();
+		this.dataDeNascimento = clienteAlteracaoRequest.getDataDeNascimento();
+		this.sexo = clienteAlteracaoRequest.getSexo();
+		this.telefone = clienteAlteracaoRequest.getTelefone();
+		this.cep = clienteAlteracaoRequest.getCep();
+		this.estado = clienteAlteracaoRequest.getEstado();
+		this.cidade = clienteAlteracaoRequest.getCidade();
+		this.bairro = clienteAlteracaoRequest.getBairro();
+		this.rua = clienteAlteracaoRequest.getRua();
+		this.numeroDaResidencia = clienteAlteracaoRequest.getNumeroDaResidencia();
+		this.dataHoraDoCadastro = LocalDateTime.now();	}
+	}
