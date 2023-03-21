@@ -4,17 +4,22 @@ import javax.validation.Valid;
 
 import org.springframework.web.bind.annotation.RestController;
 
+import br.com.sonhodosbiscoitos.clienteempresa.empresa.application.service.EmpresaService;
+import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
 @Log4j2
 @RestController
+@RequiredArgsConstructor
 public class EmpresaController implements EmpresaAPI {
+	private final EmpresaService empresaService;
 
 	@Override
-	public EmpresaRespoonse postEmpresa(@Valid EmpresaRequest EmpresaRequest) {
+	public EmpresaResponse postEmpresa(@Valid EmpresaRequest empresaRequest) {
 		log.info("[start]EmpresaController Empresa");
+		EmpresaResponse empresaCriada = empresaService.criaEmpresa(empresaRequest);
 		log.info("[finish]EmpresaController Empresa");
-		return null;
+		return empresaCriada;
 	}
 
 }

@@ -1,5 +1,5 @@
 package br.com.sonhodosbiscoitos.clienteempresa.empresa.application.api;
 
-public class EmpresaRespoonse {
+public class EmpresaResponse {
 
 }
