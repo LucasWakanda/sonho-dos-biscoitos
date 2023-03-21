@@ -26,10 +26,13 @@ public class Empresa {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
-	@Column(columnDefinition = "uuid", name = "idEmpresa", updatable = false, unique = true, nullable = false)	
+	@Column(columnDefinition = "uuid", name = "idEmpresa", updatable = false, unique = true, nullable = false)
 	private UUID idEmpresa;
 	@NotBlank
 	private String nomeEmpresa;
+	@NotBlank
+	@Column(unique = true)
+	private String cnpj;
 	@NotBlank
 	@Email
 	@Column(unique = true)
@@ -52,7 +55,7 @@ public class Empresa {
 
 	private LocalDateTime dataHoraDoCadastro;
 	private LocalDateTime dataHoraDaUltimaAlteracao;
-	
+
 	public Empresa(UUID idEmpresa, @NotBlank String nomeEmpresa, @NotBlank @Email String email,
 			@NotNull String telefone, @NotNull String cep, @NotNull Estado estado, @NotBlank String cidade,
 			@NotBlank String bairro, @NotBlank String rua, @NotBlank String numeroDaEmpresa) {

@@ -1,7 +1,5 @@
 package br.com.sonhodosbiscoitos.clienteempresa.empresa.application.api;
 
-import java.util.UUID;
-
 import javax.persistence.Column;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -16,6 +14,9 @@ import lombok.Value;
 public class EmpresaRequest {
 	@NotBlank
 	private String nomeEmpresa;
+	@NotBlank
+	@Column(unique = true)
+	private String cnpj;
 	@NotBlank
 	@Email
 	@Column(unique = true)
