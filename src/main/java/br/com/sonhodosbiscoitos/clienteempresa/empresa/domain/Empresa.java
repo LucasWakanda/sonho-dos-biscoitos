@@ -10,11 +10,13 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 import br.com.sonhodosbiscoitos.clienteempresa.cliente.domain.Estado;
+import br.com.sonhodosbiscoitos.clienteempresa.empresa.application.api.EmpresaRequest;
 import lombok.AccessLevel;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -56,18 +58,14 @@ public class Empresa {
 	private LocalDateTime dataHoraDoCadastro;
 	private LocalDateTime dataHoraDaUltimaAlteracao;
 
-	public Empresa(UUID idEmpresa, @NotBlank String nomeEmpresa, @NotBlank @Email String email,
-			@NotNull String telefone, @NotNull String cep, @NotNull Estado estado, @NotBlank String cidade,
-			@NotBlank String bairro, @NotBlank String rua, @NotBlank String numeroDaEmpresa) {
-		this.idEmpresa = idEmpresa;
-		this.nomeEmpresa = nomeEmpresa;
-		this.email = email;
-		this.telefone = telefone;
-		this.cep = cep;
-		this.estado = estado;
-		this.cidade = cidade;
-		this.bairro = bairro;
-		this.rua = rua;
-		this.numeroDaEmpresa = numeroDaEmpresa;
-	}
+	public Empresa(@Valid EmpresaRequest empresaRequest) {
+		this.nomeEmpresa = empresaRequest.getNomeEmpresa();
+		this.email = empresaRequest.getEmail();
+		this.telefone = empresaRequest.getTelefone();
+		this.cep = empresaRequest.getCep();
+		this.estado = empresaRequest.getEstado();
+		this.cidade = empresaRequest.getCidade();
+		this.bairro = empresaRequest.getBairro();
+		this.rua = empresaRequest.getRua();
+		this.numeroDaEmpresa = empresaRequest.getNumeroDaEmpresa();	}
 }
