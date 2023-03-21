@@ -14,5 +14,5 @@ import org.springframework.web.bind.annotation.RestController;
 public interface EmpresaAPI {
 	@PostMapping
 	@ResponseStatus(code = HttpStatus.CREATED)
-	EmpresaRespoonse postCliente(@Valid @RequestBody EmpresaRequest EmpresaRequest);
+	EmpresaRespoonse postEmpresa(@Valid @RequestBody EmpresaRequest EmpresaRequest);
 }
