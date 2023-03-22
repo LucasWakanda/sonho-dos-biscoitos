@@ -3,6 +3,7 @@ package br.com.sonhodosbiscoitos.clienteempresa.empresa.infra;
 import java.util.List;
 import java.util.UUID;
 
+import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
@@ -22,6 +23,12 @@ public class EmpresaInfraRepository implements EmpresaRepository {
 	@Override
 	public Empresa salva(Empresa empresa) {
 		log.info("[start]EmpresaInfraRepository salva");
+		try {
+			empresaSpringDataJPARepository.save(empresa);
+			} catch (DataIntegrityViolationException e) {
+			throw APIException.build(HttpStatus.BAD_REQUEST, "Existem dados duplicados");
+			}
+
 	    empresaSpringDataJPARepository.save(empresa);
 		log.info("[finish]EmpresaInfraRepository salva");
 		return empresa;
