@@ -28,7 +28,7 @@ public class EmpresaController implements EmpresaAPI {
 	public List<EmpresaListResponse> getTodasEmpresas() {
 		log.info("[start]EmpresaController getTodasEmpresas");
 		List<EmpresaListResponse> empresa = empresaService.buscaTodasEmpresas();
-		log.info("[start]EmpresaController getTodasEmpresas");
+		log.info("[finish]EmpresaController getTodasEmpresas");
 		return empresa;
 	}
 

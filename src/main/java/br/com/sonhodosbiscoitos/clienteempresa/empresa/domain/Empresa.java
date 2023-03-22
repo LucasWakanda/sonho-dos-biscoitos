@@ -63,6 +63,7 @@ public class Empresa {
 	public Empresa(EmpresaRequest empresaRequest) {
 		this.nomeEmpresa = empresaRequest.getNomeEmpresa();
 		this.nomeRepresentante = empresaRequest.getNomeRepresentante();
+		this.cnpj = empresaRequest.getCnpj();
 		this.email = empresaRequest.getEmail();
 		this.telefone = empresaRequest.getTelefone();
 		this.cep = empresaRequest.getCep();
@@ -71,4 +72,5 @@ public class Empresa {
 		this.bairro = empresaRequest.getBairro();
 		this.rua = empresaRequest.getRua();
 		this.numeroDaEmpresa = empresaRequest.getNumeroDaEmpresa();	}
+
 }

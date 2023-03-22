@@ -1,5 +1,7 @@
 package br.com.sonhodosbiscoitos.clienteempresa.empresa.infra;
 
+import java.util.List;
+
 import org.springframework.stereotype.Repository;
 
 import br.com.sonhodosbiscoitos.clienteempresa.empresa.application.repository.EmpresaRepository;
@@ -20,5 +22,13 @@ public class EmpresaInfraRepository implements EmpresaRepository {
 	    empresaSpringDataJPARepository.save(empresa);
 		log.info("[finish]EmpresaInfraRepository salva");
 		return empresa;
+	}
+
+	@Override
+	public List<Empresa> buscaTodasEmpresas() {
+		log.info("[start]EmpresaInfraRepository buscaTodasEmpresas");
+		List<Empresa> todasempresas = empresaSpringDataJPARepository.findAll();
+		log.info("[finish]EmpresaInfraRepository buscaTodasEmpresas");
+		return todasempresas;
 	}
 }

@@ -7,6 +7,8 @@ import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
+import org.hibernate.validator.constraints.br.CNPJ;
+
 import br.com.sonhodosbiscoitos.clienteempresa.cliente.domain.Estado;
 import lombok.Value;
 
@@ -16,7 +18,7 @@ public class EmpresaRequest {
 	private String nomeEmpresa;
 	@NotBlank
 	private String nomeRepresentante;
-	@NotBlank
+	@CNPJ
 	@Column(unique = true)
 	private String cnpj;
 	@NotBlank
