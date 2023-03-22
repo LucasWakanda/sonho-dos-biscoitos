@@ -49,4 +49,11 @@ public class EmpresaController implements EmpresaAPI {
 		empresaService.deletaEmpresaAtravesId(idEmpresa);
 		log.info("[finish]EmpresaController deletaEmpresaAtravesId");
 	}
+
+	@Override
+	public void PatchAlterapostEmpresa(UUID idEmpresa, @Valid EmpresaAlteracaoRequest empresaAlteracaoRequest) {
+		log.info("[start]EmpresaController PatchAlterapostEmpresa");
+		log.info("[idEmpresa]{}", idEmpresa);
+		log.info("[finish]EmpresaController PatchAlterapostEmpresa");
+	}
 }
