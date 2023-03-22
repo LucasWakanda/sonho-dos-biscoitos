@@ -34,11 +34,12 @@ public class EmpresaController implements EmpresaAPI {
 	}
 
 	@Override
-	public EmpresaDetalhadoResponse getTodosClienteAtravesId(UUID idEmpresa) {
+	public EmpresaDetalhadaResponse getTodosEmpresaAtravesId(UUID idEmpresa) {
 		log.info("[start]EmpresaController getTodosClienteAtravesId");
 		log.info("[idEmpresa]{}", idEmpresa);
+		EmpresaDetalhadaResponse empresaDetalhada = empresaService.buscaTodasEmpresas(idEmpresa);
 		log.info("[finish]EmpresaController getTodosClienteAtravesId");
-		return null;
+		return empresaDetalhada;
 	}
 
 }

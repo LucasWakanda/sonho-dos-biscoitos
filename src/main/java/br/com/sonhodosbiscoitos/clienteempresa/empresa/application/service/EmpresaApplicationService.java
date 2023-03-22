@@ -1,9 +1,11 @@
 package br.com.sonhodosbiscoitos.clienteempresa.empresa.application.service;
 
 import java.util.List;
+import java.util.UUID;
 
 import org.springframework.stereotype.Service;
 
+import br.com.sonhodosbiscoitos.clienteempresa.empresa.application.api.EmpresaDetalhadaResponse;
 import br.com.sonhodosbiscoitos.clienteempresa.empresa.application.api.EmpresaListResponse;
 import br.com.sonhodosbiscoitos.clienteempresa.empresa.application.api.EmpresaRequest;
 import br.com.sonhodosbiscoitos.clienteempresa.empresa.application.api.EmpresaResponse;
@@ -33,5 +35,12 @@ public class EmpresaApplicationService implements EmpresaService {
 		List<Empresa> empresas = empresaRepository.buscaTodasEmpresas();
 		log.info("[finish]EmpresaApplicationService buscaTodasEmpresas");
 		return EmpresaListResponse.converte(empresas);
+	}
+
+	@Override
+	public EmpresaDetalhadaResponse buscaTodasEmpresas(UUID idEmpresa) {
+		log.info("[start]EmpresaApplicationService buscaTodasEmpresas");
+		log.info("[finish]EmpresaApplicationService buscaTodasEmpresas");
+		return null;
 	}
 }

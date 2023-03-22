@@ -27,5 +27,5 @@ List<EmpresaListResponse> getTodasEmpresas();
 	
 	@GetMapping (value = "/{idEmpresa}")
 	@ResponseStatus(code = HttpStatus.OK)
-	EmpresaDetalhadoResponse getTodosClienteAtravesId(@PathVariable UUID idEmpresa);
+	EmpresaDetalhadaResponse getTodosEmpresaAtravesId(@PathVariable UUID idEmpresa);
 }

@@ -7,7 +7,7 @@ import br.com.sonhodosbiscoitos.clienteempresa.cliente.domain.Estado;
 import lombok.Value;
 
 @Value
-public class EmpresaDetalhadoResponse {
+public class EmpresaDetalhadaResponse {
 	private UUID idEmpresa;
 	private String nomeEmpresa;
 	private String nomeRepresentante;
