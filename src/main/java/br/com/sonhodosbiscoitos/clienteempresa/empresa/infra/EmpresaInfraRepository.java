@@ -1,11 +1,14 @@
 package br.com.sonhodosbiscoitos.clienteempresa.empresa.infra;
 
 import java.util.List;
+import java.util.UUID;
 
+import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Repository;
 
 import br.com.sonhodosbiscoitos.clienteempresa.empresa.application.repository.EmpresaRepository;
 import br.com.sonhodosbiscoitos.clienteempresa.empresa.domain.Empresa;
+import br.com.sonhodosbiscoitos.clienteempresa.handler.APIException;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.log4j.Log4j2;
 
@@ -30,5 +33,14 @@ public class EmpresaInfraRepository implements EmpresaRepository {
 		List<Empresa> todasempresas = empresaSpringDataJPARepository.findAll();
 		log.info("[finish]EmpresaInfraRepository buscaTodasEmpresas");
 		return todasempresas;
+	}
+
+	@Override
+	public Empresa buscaEmpresaAtravesId(UUID idEmpresa) {
+		log.info("[start]EmpresaInfraRepository buscaEmpresaAtravesId");
+		Empresa empresa = empresaSpringDataJPARepository.findById(idEmpresa)
+				.orElseThrow(() -> APIException.build(HttpStatus.NOT_FOUND,"Cliente não encontrado!"));
+		log.info("[finish]EmpresaInfraRepository buscaEmpresaAtravesId");
+		return empresa;
 	}
 }

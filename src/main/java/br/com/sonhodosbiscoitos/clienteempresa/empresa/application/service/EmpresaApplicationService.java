@@ -40,7 +40,8 @@ public class EmpresaApplicationService implements EmpresaService {
 	@Override
 	public EmpresaDetalhadaResponse buscaTodasEmpresas(UUID idEmpresa) {
 		log.info("[start]EmpresaApplicationService buscaTodasEmpresas");
+		Empresa empresa = empresaRepository.buscaEmpresaAtravesId(idEmpresa);
 		log.info("[finish]EmpresaApplicationService buscaTodasEmpresas");
-		return null;
+		return new EmpresaDetalhadaResponse(empresa);
 	}
 }

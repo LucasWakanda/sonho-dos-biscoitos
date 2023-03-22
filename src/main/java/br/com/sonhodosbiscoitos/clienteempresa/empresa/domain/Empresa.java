@@ -71,6 +71,7 @@ public class Empresa {
 		this.cidade = empresaRequest.getCidade();
 		this.bairro = empresaRequest.getBairro();
 		this.rua = empresaRequest.getRua();
-		this.numeroDaEmpresa = empresaRequest.getNumeroDaEmpresa();	}
+		this.numeroDaEmpresa = empresaRequest.getNumeroDaEmpresa();
+		this.dataHoraDoCadastro = LocalDateTime.now();}
 
 }
