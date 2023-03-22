@@ -43,4 +43,11 @@ public class EmpresaInfraRepository implements EmpresaRepository {
 		log.info("[finish]EmpresaInfraRepository buscaEmpresaAtravesId");
 		return empresa;
 	}
+
+	@Override
+	public void deletaEmpresaAtravesId(Empresa empresa) {
+		log.info("[start]EmpresaInfraRepository deletaEmpresaAtravesId");
+		empresaSpringDataJPARepository.delete(empresa);
+		log.info("[finish]EmpresaInfraRepository deletaEmpresaAtravesId");
+	}
 }

@@ -22,7 +22,7 @@ public class EmpresaApplicationService implements EmpresaService {
 	private final EmpresaRepository empresaRepository;
 
 	@Override
-	public EmpresaResponse criaEmpresa( EmpresaRequest empresaRequest) {
+	public EmpresaResponse criaEmpresa(EmpresaRequest empresaRequest) {
 		log.info("[start]EmpresaApplicationService criaEmpresa");
 		Empresa empresa = empresaRepository.salva(new Empresa(empresaRequest));
 		log.info("[finish]EmpresaApplicationService criaEmpresa");
@@ -43,5 +43,13 @@ public class EmpresaApplicationService implements EmpresaService {
 		Empresa empresa = empresaRepository.buscaEmpresaAtravesId(idEmpresa);
 		log.info("[finish]EmpresaApplicationService buscaTodasEmpresas");
 		return new EmpresaDetalhadaResponse(empresa);
+	}
+
+	@Override
+	public void deletaEmpresaAtravesId(UUID idEmpresa) {
+		log.info("[start]EmpresaApplicationService deletaEmpresaAtravesId");
+		Empresa empresa = empresaRepository.buscaEmpresaAtravesId(idEmpresa);
+		empresaRepository.deletaEmpresaAtravesId(empresa);
+		log.info("[finish]EmpresaApplicationService deletaEmpresaAtravesId");
 	}
 }

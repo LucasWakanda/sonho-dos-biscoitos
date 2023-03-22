@@ -73,5 +73,4 @@ public class Empresa {
 		this.rua = empresaRequest.getRua();
 		this.numeroDaEmpresa = empresaRequest.getNumeroDaEmpresa();
 		this.dataHoraDoCadastro = LocalDateTime.now();}
-
 }

@@ -42,4 +42,11 @@ public class EmpresaController implements EmpresaAPI {
 		return empresaDetalhada;
 	}
 
+	@Override
+	public void deletaEmpresaAtravesId(UUID idEmpresa) {
+		log.info("[start]EmpresaController deletaEmpresaAtravesId");
+		log.info("[idEmpresa]{}", idEmpresa);
+		empresaService.deletaEmpresaAtravesId(idEmpresa);
+		log.info("[finish]EmpresaController deletaEmpresaAtravesId");
+	}
 }

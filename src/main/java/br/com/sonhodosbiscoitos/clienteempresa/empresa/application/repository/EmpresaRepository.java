@@ -9,4 +9,5 @@ public interface EmpresaRepository {
 	Empresa salva(Empresa empresa);
 	List<Empresa> buscaTodasEmpresas();
 	Empresa buscaEmpresaAtravesId(UUID idEmpresa);
+	void deletaEmpresaAtravesId(Empresa empresa);	
 }
