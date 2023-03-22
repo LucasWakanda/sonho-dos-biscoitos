@@ -27,8 +27,9 @@ public class EmpresaController implements EmpresaAPI {
 	@Override
 	public List<EmpresaListResponse> getTodasEmpresas() {
 		log.info("[start]EmpresaController getTodasEmpresas");
+		List<EmpresaListResponse> empresa = empresaService.buscaTodasEmpresas();
 		log.info("[start]EmpresaController getTodasEmpresas");
-		return null;
+		return empresa;
 	}
 
 }

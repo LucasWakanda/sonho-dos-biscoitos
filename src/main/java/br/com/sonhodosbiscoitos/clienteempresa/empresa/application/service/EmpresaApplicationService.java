@@ -1,7 +1,10 @@
 package br.com.sonhodosbiscoitos.clienteempresa.empresa.application.service;
 
+import java.util.List;
+
 import org.springframework.stereotype.Service;
 
+import br.com.sonhodosbiscoitos.clienteempresa.empresa.application.api.EmpresaListResponse;
 import br.com.sonhodosbiscoitos.clienteempresa.empresa.application.api.EmpresaRequest;
 import br.com.sonhodosbiscoitos.clienteempresa.empresa.application.api.EmpresaResponse;
 import br.com.sonhodosbiscoitos.clienteempresa.empresa.application.repository.EmpresaRepository;
@@ -22,5 +25,12 @@ public class EmpresaApplicationService implements EmpresaService {
 		Empresa empresa = empresaRepository.salva(new Empresa(empresaRequest));
 		log.info("[finish]EmpresaApplicationService criaEmpresa");
 		return EmpresaResponse.builder().idEmpresa(empresa.getIdEmpresa()).build();
+	}
+
+	@Override
+	public List<EmpresaListResponse> buscaTodasEmpresas() {
+		log.info("[start]EmpresaApplicationService buscaTodasEmpresas");
+		log.info("[start]EmpresaApplicationService buscaTodasEmpresas");
+		return null;
 	}
 }
