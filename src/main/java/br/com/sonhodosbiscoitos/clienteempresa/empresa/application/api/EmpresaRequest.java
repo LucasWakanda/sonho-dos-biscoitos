@@ -15,6 +15,8 @@ public class EmpresaRequest {
 	@NotBlank
 	private String nomeEmpresa;
 	@NotBlank
+	private String nomeRepresentante;
+	@NotBlank
 	@Column(unique = true)
 	private String cnpj;
 	@NotBlank

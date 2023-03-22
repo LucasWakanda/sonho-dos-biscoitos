@@ -10,10 +10,11 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+
+import org.hibernate.validator.constraints.br.CNPJ;
 
 import br.com.sonhodosbiscoitos.clienteempresa.cliente.domain.Estado;
 import br.com.sonhodosbiscoitos.clienteempresa.empresa.application.api.EmpresaRequest;
@@ -33,6 +34,8 @@ public class Empresa {
 	@NotBlank
 	private String nomeEmpresa;
 	@NotBlank
+	private String nomeRepresentante;
+	@CNPJ
 	@Column(unique = true)
 	private String cnpj;
 	@NotBlank
@@ -43,7 +46,6 @@ public class Empresa {
 	private String telefone;
 	@NotNull
 	private String cep;
-	@NotNull
 	@Enumerated(EnumType.STRING)
 	private Estado estado;
 	@NotBlank
@@ -58,8 +60,9 @@ public class Empresa {
 	private LocalDateTime dataHoraDoCadastro;
 	private LocalDateTime dataHoraDaUltimaAlteracao;
 
-	public Empresa(@Valid EmpresaRequest empresaRequest) {
+	public Empresa(EmpresaRequest empresaRequest) {
 		this.nomeEmpresa = empresaRequest.getNomeEmpresa();
+		this.nomeRepresentante = empresaRequest.getNomeRepresentante();
 		this.email = empresaRequest.getEmail();
 		this.telefone = empresaRequest.getTelefone();
 		this.cep = empresaRequest.getCep();

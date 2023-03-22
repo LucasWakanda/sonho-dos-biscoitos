@@ -1,5 +1,7 @@
 package br.com.sonhodosbiscoitos.clienteempresa.empresa.application.api;
 
+import java.util.List;
+
 import javax.validation.Valid;
 
 import org.springframework.web.bind.annotation.RestController;
@@ -20,6 +22,13 @@ public class EmpresaController implements EmpresaAPI {
 		EmpresaResponse empresaCriada = empresaService.criaEmpresa(empresaRequest);
 		log.info("[finish]EmpresaController Empresa");
 		return empresaCriada;
+	}
+
+	@Override
+	public List<EmpresaListResponse> getTodasEmpresas() {
+		log.info("[start]EmpresaController getTodasEmpresas");
+		log.info("[start]EmpresaController getTodasEmpresas");
+		return null;
 	}
 
 }
