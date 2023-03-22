@@ -54,6 +54,7 @@ public class EmpresaController implements EmpresaAPI {
 	public void PatchAlterapostEmpresa(UUID idEmpresa, @Valid EmpresaAlteracaoRequest empresaAlteracaoRequest) {
 		log.info("[start]EmpresaController PatchAlterapostEmpresa");
 		log.info("[idEmpresa]{}", idEmpresa);
+		empresaService.PatchAlteraPostCliente(idEmpresa,empresaAlteracaoRequest);
 		log.info("[finish]EmpresaController PatchAlterapostEmpresa");
 	}
 }

@@ -3,8 +3,11 @@ package br.com.sonhodosbiscoitos.clienteempresa.empresa.application.service;
 import java.util.List;
 import java.util.UUID;
 
+import javax.validation.Valid;
+
 import org.springframework.stereotype.Service;
 
+import br.com.sonhodosbiscoitos.clienteempresa.empresa.application.api.EmpresaAlteracaoRequest;
 import br.com.sonhodosbiscoitos.clienteempresa.empresa.application.api.EmpresaDetalhadaResponse;
 import br.com.sonhodosbiscoitos.clienteempresa.empresa.application.api.EmpresaListResponse;
 import br.com.sonhodosbiscoitos.clienteempresa.empresa.application.api.EmpresaRequest;
@@ -51,5 +54,14 @@ public class EmpresaApplicationService implements EmpresaService {
 		Empresa empresa = empresaRepository.buscaEmpresaAtravesId(idEmpresa);
 		empresaRepository.deletaEmpresaAtravesId(empresa);
 		log.info("[finish]EmpresaApplicationService deletaEmpresaAtravesId");
+	}
+
+	@Override
+	public void PatchAlteraPostCliente(UUID idEmpresa, @Valid EmpresaAlteracaoRequest empresaAlteracaoRequest) {
+		log.info("[start]EmpresaApplicationService PatchAlteraPostCliente");
+		Empresa empresa = empresaRepository.buscaEmpresaAtravesId(idEmpresa);
+		empresa.altera(empresaAlteracaoRequest);
+		empresaRepository.salva(empresa);
+		log.info("[finish]EmpresaApplicationService PatchAlteraPostCliente");
 	}
 }

@@ -10,6 +10,7 @@ import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.validation.Valid;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
@@ -17,6 +18,7 @@ import javax.validation.constraints.NotNull;
 import org.hibernate.validator.constraints.br.CNPJ;
 
 import br.com.sonhodosbiscoitos.clienteempresa.cliente.domain.Estado;
+import br.com.sonhodosbiscoitos.clienteempresa.empresa.application.api.EmpresaAlteracaoRequest;
 import br.com.sonhodosbiscoitos.clienteempresa.empresa.application.api.EmpresaRequest;
 import lombok.AccessLevel;
 import lombok.Getter;
@@ -73,4 +75,16 @@ public class Empresa {
 		this.rua = empresaRequest.getRua();
 		this.numeroDaEmpresa = empresaRequest.getNumeroDaEmpresa();
 		this.dataHoraDoCadastro = LocalDateTime.now();}
+
+	public void altera(@Valid EmpresaAlteracaoRequest empresaAlteracaoRequest) {
+		this.nomeEmpresa = empresaAlteracaoRequest.getNomeEmpresa();
+		this.nomeRepresentante = empresaAlteracaoRequest.getNomeRepresentante();
+		this.telefone = empresaAlteracaoRequest.getTelefone();
+		this.cep = empresaAlteracaoRequest.getCep();
+		this.estado = empresaAlteracaoRequest.getEstado();
+		this.cidade = empresaAlteracaoRequest.getCidade();
+		this.bairro = empresaAlteracaoRequest.getBairro();
+		this.rua = empresaAlteracaoRequest.getRua();
+		this.numeroDaEmpresa = empresaAlteracaoRequest.getNumeroDaEmpresa();		
+	}
 }
