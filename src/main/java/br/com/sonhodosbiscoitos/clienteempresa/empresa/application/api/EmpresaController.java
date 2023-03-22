@@ -1,6 +1,7 @@
 package br.com.sonhodosbiscoitos.clienteempresa.empresa.application.api;
 
 import java.util.List;
+import java.util.UUID;
 
 import javax.validation.Valid;
 
@@ -30,6 +31,14 @@ public class EmpresaController implements EmpresaAPI {
 		List<EmpresaListResponse> empresa = empresaService.buscaTodasEmpresas();
 		log.info("[finish]EmpresaController getTodasEmpresas");
 		return empresa;
+	}
+
+	@Override
+	public EmpresaDetalhadoResponse getTodosClienteAtravesId(UUID idEmpresa) {
+		log.info("[start]EmpresaController getTodosClienteAtravesId");
+		log.info("[idEmpresa]{}", idEmpresa);
+		log.info("[finish]EmpresaController getTodosClienteAtravesId");
+		return null;
 	}
 
 }
