@@ -8,12 +8,13 @@ import javax.validation.constraints.NotNull;
 
 import org.hibernate.validator.constraints.br.CPF;
 
-import br.com.sonhodosbiscoitos.clienteempresa.cliente.domain.Estado;
+import br.com.sonhodosbiscoitos.clienteempresa.cliente.domain.Endereco;
 import br.com.sonhodosbiscoitos.clienteempresa.cliente.domain.Sexo;
 import lombok.Value;
 
 @Value
 public class ClienteRequest {
+	private Endereco endereco;
 	@NotBlank
 	private String nomeCompleto;
 	@NotNull
@@ -27,16 +28,4 @@ public class ClienteRequest {
 	private String email;
 	@NotNull
 	private String telefone;
-	@NotNull
-	private String cep;
-	@NotNull
-	private Estado estado;
-	@NotNull
-	private String cidade;
-	@NotNull
-	private String bairro;
-	@NotNull
-	private String rua;
-	@NotNull
-	private String numeroDaResidencia;
-}
+	}

@@ -29,7 +29,7 @@ public class ClienteApplicationService implements ClienteService {
 		log.info("[start]ClienteApplicationService criaCliente ");
 		Cliente cliente = clienteRepository.salva(new Cliente(clienteRequest));
 		log.info("[finish]ClienteApplicationService criaCliente ");
-		return ClienteResponse.builder().idCliente(cliente.getIdCliente()).build();
+		return new ClienteResponse(cliente);
 	}
 
 	@Override
@@ -50,10 +50,10 @@ public class ClienteApplicationService implements ClienteService {
 
 	@Override
 	public void deletaClienteAtravesId(UUID idCliente) {
-log.info("[start]ClienteApplicationService deletaClienteAtravesId");
-Cliente cliente = clienteRepository.buscaClienteAtravesId(idCliente);
-clienteRepository.deletaCliente(cliente);
-log.info("[finish]ClienteApplicationService deletaClienteAtravesId");
+		log.info("[start]ClienteApplicationService deletaClienteAtravesId");
+		Cliente cliente = clienteRepository.buscaClienteAtravesId(idCliente);
+		clienteRepository.deletaCliente(cliente);
+		log.info("[finish]ClienteApplicationService deletaClienteAtravesId");
 	}
 
 	@Override

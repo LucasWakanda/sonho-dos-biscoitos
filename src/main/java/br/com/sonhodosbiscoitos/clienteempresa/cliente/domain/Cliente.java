@@ -6,6 +6,7 @@ import java.time.LocalDateTime;
 import java.util.UUID;
 
 import javax.persistence.Column;
+import javax.persistence.Embedded;
 import javax.persistence.Entity;
 import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
@@ -29,7 +30,6 @@ import lombok.NoArgsConstructor;
 @Getter
 @Entity
 public class Cliente {
-
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(columnDefinition = "uuid", name = "idCliente", updatable = false, unique = true, nullable = false)	
@@ -41,6 +41,8 @@ public class Cliente {
 	@NotNull
 	@Enumerated(EnumType.STRING)
 	private Sexo sexo;
+	 @Embedded
+	private Endereco endereco;
 	@CPF
 	@Column(unique = true)
 	private String cpf;
@@ -50,19 +52,6 @@ public class Cliente {
 	private String email;
 	@NotNull
 	private String telefone;
-	@NotNull
-	private String cep;
-	@NotNull
-	@Enumerated(EnumType.STRING)
-	private Estado estado;
-	@NotBlank
-	private String cidade;
-	@NotBlank
-	private String bairro;
-	@NotNull
-	private String rua;
-	@NotNull
-	private String numeroDaResidencia;
 
 	private LocalDateTime dataHoraDoCadastro;
 	private LocalDateTime dataHoraDaUltimaAlteracao;
@@ -74,24 +63,15 @@ public class Cliente {
 		this.cpf = clienteRequest.getCpf();
 		this.email = clienteRequest.getEmail();
 		this.telefone = clienteRequest.getTelefone();
-		this.cep = clienteRequest.getCep();
-		this.estado = clienteRequest.getEstado();
-		this.cidade = clienteRequest.getCidade();
-		this.bairro = clienteRequest.getBairro();
-		this.rua = clienteRequest.getRua();
-		this.numeroDaResidencia = clienteRequest.getNumeroDaResidencia();
+	    this.endereco = clienteRequest.getEndereco();
 		this.dataHoraDoCadastro = LocalDateTime.now();	}
 
 	public void altera(@Valid ClienteAlteracaoRequest clienteAlteracaoRequest) {
+		this.endereco = clienteAlteracaoRequest.getEndereco();
 		this.nomeCompleto = clienteAlteracaoRequest.getNomeCompleto();
 		this.dataDeNascimento = clienteAlteracaoRequest.getDataDeNascimento();
 		this.sexo = clienteAlteracaoRequest.getSexo();
 		this.telefone = clienteAlteracaoRequest.getTelefone();
-		this.cep = clienteAlteracaoRequest.getCep();
-		this.estado = clienteAlteracaoRequest.getEstado();
-		this.cidade = clienteAlteracaoRequest.getCidade();
-		this.bairro = clienteAlteracaoRequest.getBairro();
-		this.rua = clienteAlteracaoRequest.getRua();
-		this.numeroDaResidencia = clienteAlteracaoRequest.getNumeroDaResidencia();
 		this.dataHoraDoCadastro = LocalDateTime.now();	}
+
 	}
